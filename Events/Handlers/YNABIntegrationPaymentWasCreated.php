@@ -29,13 +29,13 @@ class YNABIntegrationPaymentWasCreated {
 
     private function makeTransactionFromPayment(Payment $payment)
     {
-        dd($payment);
         $presenter = $payment->present();
 
         return [
             'transaction' => [
                 'date'        => $presenter->payment_date(),
                 'amount'      => $payment->amount * config('ynabintegration.AmountMultiplier'),
+                'memo'        => 'Invoice ID: ' . $payment->invoice->invoice_number,
                 'approved'    => true,
                 'cleared'     => 'cleared',
                 'account_id'  => config('ynabintegration.AccountId'),
