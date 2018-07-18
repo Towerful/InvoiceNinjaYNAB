@@ -15,3 +15,9 @@ YNAB_CATEGORY_ID       -> this is the category automatically assigned to the pay
 YNAB_AMOUNT_MULTIPLIER -> YNAB works in milli-currencies. This should be 1000, unless you personally automatically deduct tax from income
 YNAB_TRANSACTION_COLOR -> The color for automated transfers
 ```
+
+You may need to run  `composer dump-autoload` in your InvoiceNinja root directory.  
+You may need to run `php artisan module:update YNABIntegration` in your InvoiceNinja root directory. You may need to increase PHP's memory limit for this to work
+
+I have developed this for personal use.  
+I am open to pull requests, however I do not personally have any requirements to add further functionality
