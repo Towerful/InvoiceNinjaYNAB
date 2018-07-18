@@ -7,4 +7,5 @@ return [
     'BudgetId'         => env('YNAB_BUDGET_ID', 'YNAB_BUDGET_ID Env Not Set'),
     'AmountMultiplier' => env('YNAB_AMOUNT_MULTIPLIER', 1000),
     'TransactionColor' => env('YNAB_TRANSACTION_COLOR', 'yellow'),
+    'CategoryId'       => env('YNAB_CATEGORY_ID', null),
 ];

@@ -33,14 +33,15 @@ class YNABIntegrationPaymentWasCreated {
 
         return [
             'transaction' => [
-                'date'       => $presenter->payment_date(),
-                'amount'     => $payment->amount * config('ynabintegration.AmountMultiplier'),
-                'approved'   => true,
-                'cleared'    => 'cleared',
-                'account_id' => config('ynabintegration.AccountId'),
-                'payee_name' => $presenter->client(),
-                'flag_color' => config('ynabintegration.TransactionColor'),
-            ]
+                'date'        => $presenter->payment_date(),
+                'amount'      => $payment->amount * config('ynabintegration.AmountMultiplier'),
+                'approved'    => true,
+                'cleared'     => 'cleared',
+                'account_id'  => config('ynabintegration.AccountId'),
+                'category_id' => config('ynabintegration.CategoryId'),
+                'payee_name'  => $presenter->client(),
+                'flag_color'  => config('ynabintegration.TransactionColor'),
+            ],
         ];
     }
 }
