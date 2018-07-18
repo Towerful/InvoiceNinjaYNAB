@@ -32,8 +32,6 @@ class YNABIntegrationPaymentWasCreated {
                                     ->setApiKeyPrefix('Authorization', 'Bearer');
 
         $apiInstance = new YNAB\Client\TransactionsApi(null, $config);
-        $budgetId = "60675d3c-c630-40a5-a630-d01123392ae7";
-        $accountId = "5eece155-b108-454b-9b2a-80383d55ca44";
         $transaction = new YNAB\Model\TransactionWrapper([
             'transaction' => [
                 'date'       => $payment->payment_date(),
