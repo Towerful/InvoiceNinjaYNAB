@@ -29,8 +29,7 @@ class YNABIntegrationPaymentWasCreated {
 
     private function makeTransactionFromPayment(Payment $payment)
     {
-        debug($payment);
-        dd('Ending here');
+        dd($payment);
         $presenter = $payment->present();
 
         return [
