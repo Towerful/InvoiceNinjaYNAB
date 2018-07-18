@@ -15,6 +15,7 @@ class YNABIntegrationPaymentWasCreated {
 
     public function handle(PaymentWasCreated $event)
     {
+        \Log::info($event->payment);
         $payment = $event->payment->present();
         //public function amount()
         //public function completedAmount()
