@@ -26,8 +26,9 @@ class YNABIntegrationPaymentWasCreated {
         //public function payment_type()
         //public function method()
         //public function calendarEvent($subColors = false)
-        debug(config('ynabintegration.BudgetId'));
         // Configure API key authorization: bearer
+        debug($event->payment);
+        debug($payment);
         $config = YNAB\Configuration::getDefaultConfiguration()
                                     ->setApiKey('Authorization', config('ynabintegration.ApiKey'))
                                     ->setApiKeyPrefix('Authorization', 'Bearer');
