@@ -36,13 +36,14 @@ class YNABIntegrationPaymentWasCreated {
         $accountId = "5eece155-b108-454b-9b2a-80383d55ca44";
         $transaction = new YNAB\Model\TransactionWrapper([
             'transaction' => [
-                'date' => $payment->payment_date(),
-                'amount' => $payment->amount(),
-                'approved' => true,
-                'accountId' => config('YNABAccountId'),
+                'date'       => $payment->payment_date(),
+                'amount'     => $payment->amount(),
+                'approved'   => true,
+                'cleared'    => 'cleared',
+                'accountId'  => config('YNABAccountId'),
                 'payee_name' => $payment->client(),
-                'flag_color' => config('YNABTransactionColor')
-            ]
+                'flag_color' => config('YNABTransactionColor'),
+            ],
         ]);
         $apiInstance->createTransaction(config('YNABBudgetId'), $transaction);
     }
