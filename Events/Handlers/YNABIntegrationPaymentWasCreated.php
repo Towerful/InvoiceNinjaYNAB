@@ -26,10 +26,10 @@ class YNABIntegrationPaymentWasCreated {
         //public function payment_type()
         //public function method()
         //public function calendarEvent($subColors = false)
-        debug(config('ynab.BudgetId'));
+        debug(config('ynabintegration.BudgetId'));
         // Configure API key authorization: bearer
         $config = YNAB\Configuration::getDefaultConfiguration()
-                                    ->setApiKey('Authorization', config('ynab.ApiKey'))
+                                    ->setApiKey('Authorization', config('ynabintegration.ApiKey'))
                                     ->setApiKeyPrefix('Authorization', 'Bearer');
 
         $apiInstance = new YNAB\Client\TransactionsApi(null, $config);
@@ -39,12 +39,12 @@ class YNABIntegrationPaymentWasCreated {
                 'amount'     => $payment->amount(),
                 'approved'   => true,
                 'cleared'    => 'cleared',
-                'accountId'  => config('ynab.AccountId'),
+                'accountId'  => config('ynabintegration.AccountId'),
                 'payee_name' => $payment->client(),
-                'flag_color' => config('ynab.TransactionColor'),
+                'flag_color' => config('ynabintegration.TransactionColor'),
             ],
         ]);
-        $apiInstance->createTransaction(config('ynab.BudgetId'), $transaction);
+        $apiInstance->createTransaction(config('ynabintegration.BudgetId'), $transaction);
 
     }
 }
