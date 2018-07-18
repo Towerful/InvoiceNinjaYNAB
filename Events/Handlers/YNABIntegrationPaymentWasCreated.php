@@ -3,6 +3,7 @@
 namespace Modules\YNABIntegration\Events\Handlers;
 
 use App\Events\PaymentWasCreated;
+use DebugBar\DebugBar;
 use YNAB;
 
 class YNABIntegrationPaymentWasCreated {
@@ -15,7 +16,6 @@ class YNABIntegrationPaymentWasCreated {
 
     public function handle(PaymentWasCreated $event)
     {
-        \Log::info($event->payment);
         $payment = $event->payment->present();
         //public function amount()
         //public function completedAmount()
@@ -26,7 +26,7 @@ class YNABIntegrationPaymentWasCreated {
         //public function payment_type()
         //public function method()
         //public function calendarEvent($subColors = false)
-
+        debug(config('YNABBudgetId'));
         // Configure API key authorization: bearer
         $config = YNAB\Configuration::getDefaultConfiguration()
                                     ->setApiKey('Authorization', config('YNABApiKey'))
@@ -45,6 +45,7 @@ class YNABIntegrationPaymentWasCreated {
             ],
         ]);
         $apiInstance->createTransaction(config('YNABBudgetId'), $transaction);
+
     }
 }
 
