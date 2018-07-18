@@ -16,7 +16,8 @@ class YNABIntegrationPaymentWasCreated {
 
     public function handle(PaymentWasCreated $event)
     {
-        $payment = $event->payment->present();
+        $payment = $event->payment;
+        $presenter = $payment->present();
         //public function amount()
         //public function completedAmount()
         //public function currencySymbol()
@@ -27,8 +28,8 @@ class YNABIntegrationPaymentWasCreated {
         //public function method()
         //public function calendarEvent($subColors = false)
         // Configure API key authorization: bearer
-        debug($event->payment);
         debug($payment);
+        debug($presenter->amount());
         $config = YNAB\Configuration::getDefaultConfiguration()
                                     ->setApiKey('Authorization', config('ynabintegration.ApiKey'))
                                     ->setApiKeyPrefix('Authorization', 'Bearer');
@@ -36,12 +37,12 @@ class YNABIntegrationPaymentWasCreated {
         $apiInstance = new YNAB\Client\TransactionsApi(null, $config);
         $transaction = new YNAB\Model\TransactionWrapper([
             'transaction' => [
-                'date'       => $payment->payment_date(),
-                'amount'     => $payment->amount(),
+                'date'       => $presenter->payment_date(),
+                'amount'     => $presenter->amount(),
                 'approved'   => true,
                 'cleared'    => 'cleared',
                 'accountId'  => config('ynabintegration.AccountId'),
-                'payee_name' => $payment->client(),
+                'payee_name' => $presenter->client(),
                 'flag_color' => config('ynabintegration.TransactionColor'),
             ],
         ]);
