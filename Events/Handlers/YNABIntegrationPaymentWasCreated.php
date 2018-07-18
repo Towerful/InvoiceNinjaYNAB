@@ -38,10 +38,10 @@ class YNABIntegrationPaymentWasCreated {
         $transaction = new YNAB\Model\TransactionWrapper([
             'transaction' => [
                 'date'       => $presenter->payment_date(),
-                'amount'     => $presenter->amount(),
+                'amount'     => $payment->amount * 100,
                 'approved'   => true,
                 'cleared'    => 'cleared',
-                'accountId'  => config('ynabintegration.AccountId'),
+                'account_id'  => config('ynabintegration.AccountId'),
                 'payee_name' => $presenter->client(),
                 'flag_color' => config('ynabintegration.TransactionColor'),
             ],
