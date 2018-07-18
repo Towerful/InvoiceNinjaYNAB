@@ -10,6 +10,7 @@
         "Modules\\YNABIntegration\\Providers\\YNABIntegrationEventServiceProvider"
     ],
     "aliases":{},
+    "no-sidebar": 1,
     "files": [
         "start.php"
     ],
