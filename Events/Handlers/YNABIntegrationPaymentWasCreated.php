@@ -34,7 +34,7 @@ class YNABIntegrationPaymentWasCreated {
         return [
             'transaction' => [
                 'date'        => $presenter->payment_date(),
-                'amount'      => $payment->amount * config('ynabintegration.AmountMultiplier'),
+                'amount'      => (int)($payment->amount * config('ynabintegration.AmountMultiplier', 1000)),
                 'memo'        => 'Invoice ID: ' . $payment->invoice->invoice_number,
                 'approved'    => true,
                 'cleared'     => 'cleared',
